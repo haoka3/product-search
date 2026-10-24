@@ -57,7 +57,7 @@ const TERM_MAP = [
   { canonical: 'oppo', aliases: ['oppo', 'op'] },
   { canonical: 'vivo', aliases: ['vivo'] },
   { canonical: 'realme', aliases: ['realme', 'rm'] },
-  { canonical: 'redmi', aliases: ['redmi', 'rd'] },
+  { canonical: 'redmi', aliases: ['redmi', 'rd', 'rm'] },
   { canonical: 'poco', aliases: ['poco'] },
   { canonical: 'huawei', aliases: ['huawei', 'hw'] },
   { canonical: 'honor', aliases: ['honor', 'hn'] },
