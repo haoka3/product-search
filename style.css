@@ -1,0 +1,54 @@
+:root {
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --border: #e2e8f0;
+  --price: #ef4444;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+header { text-align: center; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; margin: -20px -20px 24px; padding: 32px 20px; border-radius: 0 0 16px 16px; }
+h1 { font-size: 26px; margin-bottom: 6px; }
+.subtitle { opacity: 0.9; font-size: 14px; }
+.search-box { position: relative; margin-bottom: 20px; }
+#searchInput { width: 100%; padding: 16px 48px 16px 20px; font-size: 16px; border: 2px solid var(--border); border-radius: 12px; background: white; transition: all 0.2s; }
+#searchInput:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1); }
+.clear-btn { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: var(--border); border: none; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; display: none; color: var(--text-light); font-size: 14px; }
+.clear-btn.visible { display: block; }
+.filters { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+.category-filters { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; }
+.radio-pill { position: relative; cursor: pointer; }
+.radio-pill input { position: absolute; opacity: 0; }
+.radio-pill span { display: inline-block; padding: 8px 16px; border: 2px solid var(--border); border-radius: 20px; font-size: 14px; background: white; transition: all 0.2s; user-select: none; }
+.radio-pill:hover span { border-color: var(--primary); }
+.radio-pill input:checked + span { background: var(--primary); color: white; border-color: var(--primary); }
+.view-toggle { display: flex; gap: 8px; }
+.view-btn { padding: 8px 16px; border: 2px solid var(--border); background: white; border-radius: 8px; cursor: pointer; font-size: 14px; }
+.view-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+.status-bar { padding: 12px 0; color: var(--text-light); font-size: 14px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+#results table { width: 100%; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border-collapse: collapse; }
+#results th { background: #f1f5f9; padding: 12px; text-align: left; font-size: 12px; color: var(--text-light); font-weight: 600; text-transform: uppercase; }
+#results td { padding: 12px; border-top: 1px solid var(--border); font-size: 14px; vertical-align: top; }
+#results tr:hover td { background: #f8fafc; }
+.code-cell { font-family: "Courier New", monospace; font-weight: 700; color: var(--primary-dark); }
+.price-cell { font-weight: 700; color: var(--price); text-align: right; white-space: nowrap; }
+.brand-tag { display: inline-block; padding: 2px 8px; background: #e0e7ff; color: var(--primary-dark); border-radius: 4px; font-size: 12px; margin-right: 4px; margin-bottom: 2px; }
+.grid-view { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.product-card { background: white; border-radius: 12px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid var(--border); transition: all 0.2s; display: flex; flex-direction: column; }
+.product-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); transform: translateY(-2px); }
+.product-code { font-family: "Courier New", monospace; font-size: 13px; color: var(--primary); font-weight: 700; margin-bottom: 8px; }
+.product-name { font-size: 14px; line-height: 1.4; margin-bottom: 12px; flex: 1; }
+.product-brands { margin-bottom: 12px; min-height: 22px; }
+.product-price { font-size: 20px; font-weight: 700; color: var(--price); border-top: 1px dashed var(--border); padding-top: 12px; }
+.category-badge { display: inline-block; padding: 2px 8px; background: #f1f5f9; color: var(--text-light); border-radius: 4px; font-size: 11px; margin-bottom: 8px; align-self: flex-start; }
+.empty-state { text-align: center; padding: 60px 20px; color: var(--text-light); background: white; border-radius: 12px; }
+.suggest-label { padding: 12px 0; color: var(--text-light); font-size: 13px; font-style: italic; }
+@media (max-width: 640px) {
+  .filters { flex-direction: column; }
+  #results table { font-size: 12px; }
+  #results th, #results td { padding: 8px; }
+  h1 { font-size: 20px; }
+}

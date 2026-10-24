@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔍 Tìm kiếm sản phẩm - TPK</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🔍 Tìm Kiếm Sản Phẩm</h1>
+      <p class="subtitle">Tra cứu nhanh mã hàng & báo giá chính xác</p>
+    </header>
+
+    <div class="search-box">
+      <input type="text" id="searchInput"
+             placeholder="Hãy nhập hàng hóa bạn cần tìm (VD: mh s21, pin vivo, ip14pm, samsung a15...)"
+             autocomplete="off">
+      <button id="clearBtn" class="clear-btn" title="Xóa">✕</button>
+    </div>
+
+    <div class="filters">
+      <div class="category-filters">
+        <label class="radio-pill"><input type="radio" name="category" value="all" checked><span>Tất cả</span></label>
+        <label class="radio-pill"><input type="radio" name="category" value="manhinh"><span>Màn hình</span></label>
+        <label class="radio-pill"><input type="radio" name="category" value="pin"><span>Pin</span></label>
+        <label class="radio-pill"><input type="radio" name="category" value="matlung"><span>Mặt lưng</span></label>
+        <label class="radio-pill"><input type="radio" name="category" value="bosac"><span>Bo sạc - Cụm sạc - Chân sạc</span></label>
+        <label class="radio-pill"><input type="radio" name="category" value="caploa"><span>Cáp loa - Loa trong ngoài</span></label>
+        <label class="radio-pill"><input type="radio" name="category" value="khac"><span>Khác</span></label>
+      </div>
+
+      <div class="view-toggle">
+        <button id="viewTable" class="view-btn active">📋 Bảng</button>
+        <button id="viewGrid" class="view-btn">▦ Lưới</button>
+      </div>
+    </div>
+
+    <div class="status-bar">
+      <span id="resultCount">Đang tải dữ liệu...</span>
+      <span id="loadingInfo"></span>
+    </div>
+
+    <div id="results"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
