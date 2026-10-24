@@ -65,6 +65,68 @@ const TERM_MAP = [
   { canonical: 'ipad', aliases: ['ipad', 'ipd'] },
 
   // ---------- iPHONE MODELS ----------
+  // ---------- iPHONE 6 / 6S / 6 PLUS / 6S PLUS ----------
+{ canonical: 'iphone 6', aliases: [
+  'ip6', 'ip 6', 'iphone6', 'iphone 6', 'i6',
+  'ip6g', 'ip 6g', 'iphone 6g', '6g',
+  'iphon 6', 'ipone 6', 'iphne 6', 'iph 6'
+]},
+{ canonical: 'iphone 6 plus', aliases: [
+  'ip6p', 'ip6+', 'ip6plus', 'ip6 plus', 'ip 6 plus',
+  '6p', '6plus', '6 plus',
+  'iphone 6 plus', 'iphone6plus', 'iphone6p',
+  '6 pluss', '6 plush', 'ip6 pluss', 'ip6 plush'
+]},
+{ canonical: 'iphone 6s', aliases: [
+  'ip6s', 'ip 6s', 'ip6sg', 'iphone6s', 'iphone 6s',
+  'i6s', '6s', 'ip 6sg', '6sg',
+  'iphon 6s', 'ipone 6s'
+]},
+{ canonical: 'iphone 6s plus', aliases: [
+  'ip6sp', 'ip6s+', 'ip6splus', 'ip6s plus', 'ip 6s plus',
+  '6sp', '6splus', '6s plus', '6s+',
+  'iphone 6s plus', 'iphone6splus', 'iphone6sp',
+  '6s pluss', '6s plush', 'ip6s pluss', 'ip6s plush'
+]},
+
+// ---------- iPHONE 7 / 7 PLUS ----------
+{ canonical: 'iphone 7', aliases: [
+  'ip7', 'ip 7', 'iphone7', 'iphone 7', 'i7',
+  'ip7g', 'ip 7g', 'iphone 7g', '7g',
+  'iphon 7', 'ipone 7', 'iphne 7'
+]},
+{ canonical: 'iphone 7 plus', aliases: [
+  'ip7p', 'ip7+', 'ip7plus', 'ip7 plus', 'ip 7 plus',
+  '7p', '7plus', '7 plus',
+  'iphone 7 plus', 'iphone7plus', 'iphone7p',
+  '7 pluss', '7 plush', 'ip7 pluss', 'ip7 plush'
+]},
+
+// ---------- iPHONE 8 / 8 PLUS ----------
+{ canonical: 'iphone 8', aliases: [
+  'ip8', 'ip 8', 'iphone8', 'iphone 8', 'i8',
+  'ip8g', 'ip 8g', 'iphone 8g', '8g',
+  'iphon 8', 'ipone 8', 'iphne 8'
+]},
+{ canonical: 'iphone 8 plus', aliases: [
+  'ip8p', 'ip8+', 'ip8plus', 'ip8 plus', 'ip 8 plus',
+  '8p', '8plus', '8 plus',
+  'iphone 8 plus', 'iphone8plus', 'iphone8p',
+  '8 pluss', '8 plush', 'ip8 pluss', 'ip8 plush'
+]},
+
+// ---------- iPHONE SE (2nd & 3rd gen) ----------
+{ canonical: 'iphone se 2020', aliases: [
+  'se 2020', 'se2020', 'ip se 2020', 'iphone se 2020',
+  'se 2', 'se2', 'iphone se 2', 'iphone se2', 'se gen 2', 'se 2020 gen 2',
+  'se20', 'se 20'
+]},
+{ canonical: 'iphone se 3', aliases: [
+  'se 3', 'se3', 'iphone se 3', 'iphone se3',
+  'se 2022', 'se2022', 'ip se3', 'ip se 3',
+  'se gen 3', 'se 2022 gen 3'
+]},
+
   { canonical: 'iphone x', aliases: ['ip x', 'ipx', 'iphone x', 'ix'] },
   { canonical: 'iphone xr', aliases: ['ip xr', 'ipxr', 'iphone xr', 'xr'] },
   { canonical: 'iphone xs', aliases: ['ip xs', 'ipxs', 'iphone xs', 'xs'] },
