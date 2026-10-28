@@ -4,7 +4,7 @@
 // Sheet đã publish: .../pubhtml?gid=1011628736
 // Dùng CSV export của CHÍNH SHEET ĐÓ (CORS-friendly, luôn mới):
 const SHEET_PUB_BASE = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQqiS9Tu3PO5ZGtz-eYwOAu3QCBLXuqYjZYsGgEr7k01poBoLfWiMP9H1oirKRzVg';
-const GID = '1011628736';
+const GID = '794128779';
 const CSV_URL = `${SHEET_PUB_BASE}/pub?gid=${GID}&single=true&output=csv`;
 const PROXY_URL = 'https://corsproxy.io/?';
 const LOCAL_CSV = './data.csv';
