@@ -107,6 +107,31 @@
         subtree: true
     });
 })();
+
+//--
+(function() {
+    const FB_URL = 'https://www.facebook.com/truong.a.hao.2024/';
+    
+    // Tìm tất cả SVG có viewBox của icon Facebook
+    const svgs = document.querySelectorAll('svg[viewBox="0 0 256 256"]');
+    
+    svgs.forEach(svg => {
+        // Kiểm tra có path fill màu xanh Facebook (#1877f2) không
+        const fbPath = svg.querySelector('path[fill="#1877f2"]');
+        if (fbPath) {
+            // Lấy thẻ <a> gần nhất trong container
+            const container = svg.closest('div.m-1.p-2.flex.cursor-pointer');
+            const link = container?.querySelector('a');
+            
+            if (link) {
+                link.href = FB_URL;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                console.log('✅ Đã gắn link:', FB_URL);
+            }
+        }
+    });
+})();
   </script>
 </body>
 </html>
