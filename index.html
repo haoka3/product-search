@@ -109,29 +109,45 @@
 })();
 
 //--
-(function() {
-    const FB_URL = 'https://www.facebook.com/truong.a.hao.2024/';
-    
-    // Tìm tất cả SVG có viewBox của icon Facebook
-    const svgs = document.querySelectorAll('svg[viewBox="0 0 256 256"]');
-    
-    svgs.forEach(svg => {
-        // Kiểm tra có path fill màu xanh Facebook (#1877f2) không
-        const fbPath = svg.querySelector('path[fill="#1877f2"]');
-        if (fbPath) {
-            // Lấy thẻ <a> gần nhất trong container
-            const container = svg.closest('div.m-1.p-2.flex.cursor-pointer');
-            const link = container?.querySelector('a');
-            
-            if (link) {
-                link.href = FB_URL;
-                link.target = '_blank';
-                link.rel = 'noopener noreferrer';
-                console.log('✅ Đã gắn link:', FB_URL);
-            }
-        }
-    });
-})();
   </script>
+  //--------------------------------
+<script>
+(function () {
+    'use strict';
+    const FB_URL = 'https://www.facebook.com/truong.a.hao.2024/';
+
+    function patchFbLinks() {
+        // Tìm TẤT CẢ thẻ <a> có href rỗng
+        document.querySelectorAll('a[href=""]').forEach(function (a) {
+            // Xác minh: nằm trong khối có icon Facebook (fill="#1877f2")
+            const box = a.closest('div.m-1.p-2.flex.cursor-pointer');
+            if (!box || !box.querySelector('path[fill="#1877f2"]')) return;
+
+            // Chèn URL + thuộc tính an toàn
+            a.setAttribute('href', FB_URL);
+            a.setAttribute('target', '_blank');
+            a.setAttribute('rel', 'noopener noreferrer');
+        });
+    }
+
+    // 1. Chạy ngay khi DOM sẵn sàng
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', patchFbLinks);
+    } else {
+        patchFbLinks();
+    }
+
+    // 2. Theo dõi DOM thay đổi (Vue render lại, data load sau...)
+    new MutationObserver(patchFbLinks).observe(document.documentElement, {
+        childList: true,
+        subtree: true
+    });
+
+    // 3. Chạy lại vài lần đề phòng render muộn
+    setTimeout(patchFbLinks, 500);
+    setTimeout(patchFbLinks, 1500);
+    setTimeout(patchFbLinks, 3000);
+})();
+</script>
 </body>
 </html>
