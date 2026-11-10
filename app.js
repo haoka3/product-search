@@ -507,29 +507,58 @@ function renderEmpty() {
   </div>`;
 }
 
+
 function render() {
   let list, isRandom = false;
+  let hasNumber = false;
+
   if (!state.search.trim()) {
     list = getRandomFive();
     isRandom = true;
   } else {
+    // Kiểm tra từ khóa có chứa ít nhất một chữ số 0-9
+    hasNumber = /\d/.test(state.search);
+
+    // Tìm kiếm tất cả kết quả khớp
     list = searchProducts(state.search);
-    if (state.category !== 'all') list = list.filter(p => p.type === state.category);
+
+    // Giữ nguyên bộ lọc danh mục
+    if (state.category !== 'all') {
+      list = list.filter(p => p.type === state.category);
+    }
+
+    // Không có số: giới hạn 10 kết quả
+    // Có số: hiển thị toàn bộ kết quả
+    if (!hasNumber) {
+      list = list.slice(0, 10);
+    }
   }
 
   const container = document.getElementById('results');
+
   let body = list.length === 0 ? renderEmpty()
-           : state.view === 'table' ? renderTable(list)
-           : renderGrid(list);
+    : state.view === 'table' ? renderTable(list)
+    : renderGrid(list);
 
   if (isRandom) {
-    body = `<div class="suggest-label">💡 Gợi ý 5 sản phẩm ngẫu nhiên — nhập từ khóa để tìm kiếm chính xác</div>` + body;
+    body = `<div class="suggest-label">
+      💡 Gợi ý 5 sản phẩm ngẫu nhiên — nhập từ khóa để tìm kiếm chính xác
+    </div>` + body;
   }
+
   container.innerHTML = body;
 
-  document.getElementById('resultCount').textContent = isRandom
-    ? `Hiển thị 5 sản phẩm gợi ý / ${allProducts.length.toLocaleString('vi-VN')} sản phẩm`
-    : `Tìm thấy ${list.length.toLocaleString('vi-VN')} / ${allProducts.length.toLocaleString('vi-VN')} sản phẩm`;
+  // Hiển thị số lượng kết quả
+  if (isRandom) {
+    document.getElementById('resultCount').textContent =
+      `Hiển thị 5 sản phẩm gợi ý / ${allProducts.length.toLocaleString('vi-VN')} sản phẩm`;
+  } else if (!hasNumber) {
+    document.getElementById('resultCount').textContent =
+      `Hiển thị ${list.length.toLocaleString('vi-VN')} sản phẩm đầu tiên (tối đa 10)`;
+  } else {
+    document.getElementById('resultCount').textContent =
+      `Tìm thấy ${list.length.toLocaleString('vi-VN')} kết quả khớp / ${allProducts.length.toLocaleString('vi-VN')} sản phẩm`;
+  }
 }
 
 // ============================================================
