@@ -46,20 +46,111 @@ h1 { font-size: 26px; margin-bottom: 6px; }
 .category-badge { display: inline-block; padding: 2px 8px; background: #f1f5f9; color: var(--text-light); border-radius: 4px; font-size: 11px; margin-bottom: 8px; align-self: flex-start; }
 .empty-state { text-align: center; padding: 60px 20px; color: var(--text-light); background: white; border-radius: 12px; }
 .suggest-label { padding: 12px 0; color: var(--text-light); font-size: 13px; font-style: italic; }
+
 .zalo-button {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: #0084ff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    padding: 13px 27px;
+    margin-top: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #00A5FF 0%,
+        #087CF0 50%,
+        #0068D9 100%
+    );
+
     color: #ffffff;
     text-decoration: none;
-    font-weight: bold;
-    border-radius: 8px;
-    margin-top: 12px;
-    transition: background-color 0.2s ease;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.25px;
+
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 15px rgba(0, 132, 255, 0.25),
+        0 2px 5px rgba(0, 80, 180, 0.12),
+        inset 0 1px 0 rgba(255,255,255,0.25);
+
+    position: relative;
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+
+    -webkit-tap-highlight-color: transparent;
 }
+
+/* Hiệu ứng ánh sáng */
+.zalo-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(
+        110deg,
+        transparent,
+        rgba(255,255,255,0.3),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+    transition: left 0.65s ease;
+}
+
+/* Hover chuyên nghiệp */
 .zalo-button:hover {
-    background-color: #006bd6;
+    transform: translateY(-3px);
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 10px 25px rgba(0, 132, 255, 0.35),
+        0 4px 10px rgba(0, 80, 180, 0.15);
 }
+
+.zalo-button:hover::before {
+    left: 150%;
+}
+
+/* Khi nhấn */
+.zalo-button:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 3px 8px rgba(0, 132, 255, 0.2);
+}
+
+/* Hỗ trợ bàn phím */
+.zalo-button:focus-visible {
+    outline: 3px solid rgba(0, 132, 255, 0.35);
+    outline-offset: 4px;
+}
+
+/* Điện thoại */
+@media (max-width: 480px) {
+    .zalo-button {
+        padding: 12px 21px;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+}
+
+/* Tôn trọng cài đặt giảm chuyển động */
+@media (prefers-reduced-motion: reduce) {
+    .zalo-button,
+    .zalo-button::before {
+        transition: none;
+    }
+}
+
 @media (max-width: 640px) {
   .filters { flex-direction: column; }
   #results table { font-size: 12px; }
