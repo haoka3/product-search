@@ -46,6 +46,20 @@ h1 { font-size: 26px; margin-bottom: 6px; }
 .category-badge { display: inline-block; padding: 2px 8px; background: #f1f5f9; color: var(--text-light); border-radius: 4px; font-size: 11px; margin-bottom: 8px; align-self: flex-start; }
 .empty-state { text-align: center; padding: 60px 20px; color: var(--text-light); background: white; border-radius: 12px; }
 .suggest-label { padding: 12px 0; color: var(--text-light); font-size: 13px; font-style: italic; }
+.zalo-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #0084ff;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-top: 12px;
+    transition: background-color 0.2s ease;
+}
+.zalo-button:hover {
+    background-color: #006bd6;
+}
 @media (max-width: 640px) {
   .filters { flex-direction: column; }
   #results table { font-size: 12px; }
