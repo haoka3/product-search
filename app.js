@@ -1,13 +1,41 @@
-// ============================================================
-// CONFIG — Google Sheets (link pubhtml gốc của bạn)
-// ============================================================
-// Sheet đã publish: .../pubhtml?gid=1011628736
-// Dùng CSV export của CHÍNH SHEET ĐÓ (CORS-friendly, luôn mới):
-const SHEET_PUB_BASE = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQMbA94SI4mVx6xRQGweX-taJGX5S7KNkzN4uAKP_PpNYSpmWpZG-lAu1nT0zKULGL9OmJ_2DF6a1sx';
-const GID = '1012388770';
-const CSV_URL = `${SHEET_PUB_BASE}/pub?gid=${GID}&single=true&output=csv`;
+
+ // ============================================================
+ //B64U8
+ // ============================================================
+// 1.L
+const SHEET_PUB_BASE_B64 =
+'aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vc3ByZWFkc2hlZXRzL2QvZS8yUEFDWC0xdlFNYkE5NFNJNG1WeDZ4UlFHd2VYLXRhSkdYNVM3S05rek40dUFLUF9QcE5ZU3BtV3BaRy1sQXUxblQwektVTEdMOU9tSl8yREY2YTFzeA==';
+// 2. GID
+const GID_B64 = 'MTAxMjM4ODc3MA==';
+// 3.
+function decodeBase64(value) {
+    try {
+        return decodeURIComponent(
+            Array.from(atob(value))
+                .map(c => '%' + c.charCodeAt(0).toString(16).padStart(2, '0'))
+                .join('')
+        );
+    } catch (error) {
+        console.error('Lỗi giải mã Base64:', error);
+        return '';
+    }
+}
+// 4. G
+const SHEET_PUB_BASE = decodeBase64(SHEET_PUB_BASE_B64);
+const GID = decodeBase64(GID_B64);
+// 5. TẠO LINK CSV TỰ ĐỘNG
+const CSV_URL =
+    `${SHEET_PUB_BASE}/pub?gid=${GID}&single=true&output=csv`;
+// 6. PROXY VÀ FILE DỰ PHÒNG
 const PROXY_URL = 'https://corsproxy.io/?';
 const LOCAL_CSV = './data.csv';
+// 7. KIỂM TRA CẤU HÌNH
+if (!SHEET_PUB_BASE || !GID) {
+    console.error('❌ Không thể giải mã cấu hình Google Sheets');
+} else {
+    console.log('✅ Cấu hình Google Sheets hợp lệ');
+}
+
 
 // ============================================================
 // STATE
